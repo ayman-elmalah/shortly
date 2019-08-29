@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ayman-elmalah/framework.git",
-                "reference": "65a754d2cdc83b7355b5deff4ffd149247ef68b4"
+                "reference": "c93240154a3dc897a7dea920be8507db94029ace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ayman-elmalah/framework/zipball/65a754d2cdc83b7355b5deff4ffd149247ef68b4",
-                "reference": "65a754d2cdc83b7355b5deff4ffd149247ef68b4",
+                "url": "https://api.github.com/repos/ayman-elmalah/framework/zipball/c93240154a3dc897a7dea920be8507db94029ace",
+                "reference": "c93240154a3dc897a7dea920be8507db94029ace",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -223,7 +223,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -267,7 +267,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -312,7 +312,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -364,7 +364,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -425,7 +425,7 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v5.8.33",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",

@@ -34,11 +34,13 @@ class AuthController {
         $admin = Admin::where('user_name', '=', Request::post('user_name'))->first();
         if (! $admin) {
             Session::setFlash('message', 'The user is not found');
+            Session::setFlash('old', Request::all());
             return redirect(previous());
         }
 
         if (! password_verify(Request::post('password'), $admin->password)) {
             Session::setFlash('message', 'The user is not found');
+            Session::setFlash('old', Request::all());
             return redirect(previous());
         }
 

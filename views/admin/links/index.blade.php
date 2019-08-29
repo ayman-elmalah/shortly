@@ -59,7 +59,7 @@
                             @foreach($links as $link)
                                 <tr>
                                     <td>{{ $link->id }}</td>
-                                    <td><a href="{{ url('admin-panel/users/' . $link->user_id . '/edit') }}">{{ $link->user->first_name }}</a></td>
+                                    <td><a href="{{ $link->user ? url('admin-panel/users/' . $link->user_id . '/edit') : '#' }}">{{ $link->user ? $link->user->first_name : 'Unknown user' }}</a></td>
                                     <td><a href="{{ $link->full_link }}" target="_blank">{{ $link->full_link }}</a></td>
                                     <td><a href="{{ url('link/'.$link->short_link) }}" target="_blank">{{ $link->short_link }}</a></td>
                                     <td>

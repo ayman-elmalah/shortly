@@ -14,7 +14,7 @@ class AuthController {
      *
      * @return \Phplite\View\View
      */
-    public function index() {
+    public function showLoginForm() {
         $title = 'User Login';
         return view('web.auth.login', ['title' => $title]);
     }
@@ -34,17 +34,19 @@ class AuthController {
         $user = User::where('user_name', '=', Request::post('user_name'))->first();
         if (! $user) {
             Session::setFlash('message', 'The user is not found');
+            Session::setFlash('old', Request::all());
             return redirect(previous());
         }
 
         if (! password_verify(Request::post('password'), $user->password)) {
             Session::setFlash('message', 'The user is not found');
+            Session::setFlash('old', Request::all());
             return redirect(previous());
         }
 
         Request::post('remember') == 'on' ? Cookie::set('users', $user->id) : Session::set('users', $user->id);
 
-        return redirect(url('my-links'));
+        return redirect(url('/'));
     }
 
     /**
@@ -73,7 +75,7 @@ class AuthController {
         $user = User::insert(['first_name' => Request::post('first_name'), 'last_name' => Request::post('last_name'), 'user_name' => Request::post('user_name'), 'password' => password_hash(Request::post('password'), PASSWORD_BCRYPT)]);
         Session::set('users', $user->id);
 
-        return redirect(url('my-links'));
+        return redirect(url('/'));
     }
 
     /**
@@ -85,6 +87,6 @@ class AuthController {
         Cookie::remove('users');
         Session::remove('users');
 
-        return redirect(url('/'));
+        return redirect(url('login'));
     }
 }

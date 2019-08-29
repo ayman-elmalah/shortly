@@ -4,6 +4,7 @@ namespace App\Controllers\Web;
 
 use App\Models\Link;
 use Phplite\Http\Request;
+use Phplite\Http\Response;
 use Phplite\Session\Session;
 use Phplite\Validator\Validate;
 
@@ -23,17 +24,23 @@ class LinksController {
     /**
      * Store link
      *
-     * @return \Phplite\Url\Url
+     * @return \Phplite\Http\Response
      */
     public function store() {
-        Validate::validate([
-            'full_link' => 'required|url',
-        ]);
+        $validation = Validate::validate([
+            'full_link' => 'required|min:2|url',
+        ], true);
+        if ($validation) {
+            return $validation;
+        }
         $short_url= unique('links', 'short_link');
-        $link = Link::insert(['full_link' => Request::post('full_link'), 'short_link' => $short_url, 'user_id' => auth('users')->id]);
+        $data = ['full_link' => Request::post('full_link'), 'short_link' => $short_url];
+        $data = auth('users') ? array_merge($data, ['user_id' => auth('users')->id]) : $data;
+        $link = Link::insert($data);
 
-        Session::set('message', 'The link saved successfully and the link is ' . url('link/' . $link->short_link));
-        return redirect(previous());
+        $url = url('link/' . $link->short_link);
+
+        return Response::json(['url' => $url]);
     }
 
     /**
@@ -43,7 +50,8 @@ class LinksController {
      * @return \Phplite\Url\Url
      */
     public function delete($id) {
-        $link = Link::where('id', '=', $id)->where('user_id', '=', auth('users')->id)->first();
+        $user_id = auth('users')->id;
+        $link = Link::where('id', '=', $id)->where('user_id', '=', $user_id)->first();
         if (! $link) {
             Session::set('message', 'The link is not found');
             return redirect(previous());

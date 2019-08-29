@@ -1,4 +1,6 @@
-<?php $__env->startSection('content'); ?>
+@extends('web.layouts.layout')
+
+@section('content')
     <!--Start Hero Section-->
     <section class="hero text-center">
         <div class="container">
@@ -7,7 +9,7 @@
                     <h1>URL Shortener</h1>
                     <p class="lead">Simplify your links, track & manage them
                     </p>
-                    <form action="<?php echo e(url('link/store')); ?>" method="POST" id="link_store">
+                    <form action="{{ url('link/store') }}" method="POST" id="link_store">
                         <div class="alert" id="link_message"></div>
                         <div class="input-group mb-3">
                             <input name="full_link" type="text" class="form-control" placeholder="Please Long URl And Shorten It">
@@ -90,5 +92,4 @@
             </div>
         </div>
     </div>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('web.layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\shortly\views/web/home/index.blade.php ENDPATH**/ ?>
+@endsection

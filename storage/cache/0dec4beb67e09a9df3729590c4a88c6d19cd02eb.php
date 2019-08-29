@@ -57,7 +57,7 @@
                             <?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $link): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td><?php echo e($link->id); ?></td>
-                                    <td><a href="<?php echo e(url('admin-panel/users/' . $link->user_id . '/edit')); ?>"><?php echo e($link->user->first_name); ?></a></td>
+                                    <td><a href="<?php echo e($link->user ? url('admin-panel/users/' . $link->user_id . '/edit') : '#'); ?>"><?php echo e($link->user ? $link->user->first_name : 'Unknown user'); ?></a></td>
                                     <td><a href="<?php echo e($link->full_link); ?>" target="_blank"><?php echo e($link->full_link); ?></a></td>
                                     <td><a href="<?php echo e(url('link/'.$link->short_link)); ?>" target="_blank"><?php echo e($link->short_link); ?></a></td>
                                     <td>
