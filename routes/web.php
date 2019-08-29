@@ -14,7 +14,7 @@ Route::middleware('GuestUser', function () {
 });
 
 // Auth user routes
-Route::middleware('AuthAdmin', function () {
+Route::middleware('AuthUser', function () {
     // My links page
     Route::get('/my-links', 'Web\LinksController@mylinks');
 
